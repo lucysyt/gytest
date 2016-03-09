@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>jquery右下角滑动弹出可关闭重现层 博客园 计划 教程</title>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<style type="text/css">
+	    *{ margin:0px; padding:0px;}
+	    #jihuaslide{ width:300px; height:200px; border:1px solid #000; position:fixed; bottom:2px; right:2px; display:none; background-color:White;}
+	    #jihuaslide a{ position:absolute; top:8px; right:8px; font-size:12px; text-decoration:none; color:Blue;}
+	    #jihuaslide h2{ font-size:24px; text-align:center;font-family:"微软雅黑";}
+	    #reshow{position:fixed;right:2px;bottom:2px;font-size:12px; display:none;background-color:White; cursor:pointer;border:1px solid #000;}
+</style>
+</head>
+
+<body>
+	<div id="reshow">中国化工企业管理协会企业家联谊会的春节慰问信</div>
+	<div id="jihuaslide">
+		<a href="javaScript:void(0)" id="close">关闭</a>
+		<h2>中国化工企业管理协会企业家联谊会的春节慰问信</h2>
+	</div>
+	<script type="text/javascript">
+
+        function Jihua_Cnblogs_Com() { 
+
+        	$("#jihuaslide").slideDown("slow"); $("#reshow").hide();
+
+        	 }
+        $(document).ready(function () {
+
+            setTimeout(function () {
+
+                Jihua_Cnblogs_Com();
+
+            }, 1000)
+            $("#close").click(function () {
+
+                $("#jihuaslide").slideUp("slow"); $("#reshow").show();
+
+            })
+            $("#reshow").mouseover(function () {
+
+                Jihua_Cnblogs_Com(); 
+             })
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>轮播图</title>
+    <style type="text/css">
+    body {
+        background-color: #dddddd;
+    }
+    
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+    
+    .main {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin: -175px 0px 0px -250px;
+        width: 500px;
+        height: 350px;
+    }
+    
+    .myslide {
+        float: left;
+        width: 500px;
+        height: 350px;
+        background-color: #eeeeee;
+        position: absolute;
+        overflow: hidden;
+    }
+    
+    .myslidetwo {
+        position: absolute;
+        overflow: hidden;
+        width: 2000px;
+    }
+    
+    .myslidetwo div {
+        float: left;
+        width: 500px;
+        height: 350px;
+    }
+    
+    .daohang {
+        position: absolute;
+        bottom: -40px;
+        left: 70px;
+        width: 400px;
+        /*background: red;*/
+    }
+    
+    ol li {
+        list-style: none;
+        float: left;
+        border: #fc0;
+        font-size: 30px;
+        background: #fff;
+        cursor: pointer;
+    }
+    
+    ol li.current {
+        background: #0f0;
+    }
+    </style>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+    	
+	        var _now = 0;
+	        var oul = $(".myslidetwo");
+	        var numl = $(".daohang ol li");
+	        var ali = $(".myslide").eq(0).width();
+
+	        numl.click(function() {
+
+	            var index = $(this).index();
+
+	            $(this).addClass("current").siblings().removeClass();
+
+	            oul.animate({
+	                'left': -ali * index
+	            }, 500);
+
+	        })
+		$(oul).mouseover(function(){
+
+			$('.myslidetwo').attr("data-is","1");
+
+		})
+		$(oul).mouseout(function(){
+
+			$('.myslidetwo').attr("data-is","0");
+		})
+
+        setInterval(function() {
+
+	        var is_hover = $('.myslidetwo').attr('data-is');
+
+	        // alert(is_hover);
+
+		if( is_hover ==0 ){
+
+
+		            if (_now == numl.size() - 1) {
+		                _now = 0;
+		            } else {
+		                _now++;
+		            }
+
+		            numl.eq(_now).addClass("current").siblings().removeClass();
+
+		            if (_now == 0) {
+
+		                oul.animate({
+		                    'left': -ali * _now
+		                }, 0);
+
+		            } else
+
+		                oul.animate({
+		                'left': -ali * _now
+		            }, 500);
+		}
+		else{
+			return false;
+		}
+        }, 2000)
+
+
+    });
+
+    </script>
+</head>
+
+<body>
+    <div class="main">
+        <div class="myslide">
+            <div class="myslidetwo" data-is="0">
+                <div>
+                    <ol>
+                        <li>这是一的内容</li>
+                        <li>这是一的内容</li>
+                        <li>这是一的内容</li>
+                        <li>这是一的内容</li>
+                    </ol>
+                </div>
+                <div>
+                    <ol>
+                        <li>这是二的内容</li>
+                        <li>这是二的内容</li>
+                        <li>这是二的内容</li>
+                        <li>这是二的内容</li>
+                    </ol>
+                </div>
+                <div>
+                    <ol>
+                        <li>这是三的内容</li>
+                        <li>这是三的内容</li>
+                        <li>这是三的内容</li>
+                        <li>这是三的内容</li>
+                    </ol>
+                </div>
+                <div>
+                    <ol>
+                        <li>这是四的内容</li>
+                        <li>这是四的内容</li>
+                        <li>这是四的内容</li>
+                        <li>这是四的内容</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="daohang">
+            <ol>
+                <li>选项一</li>
+                <li>选项二</li>
+                <li>选项三</li>
+                <li>选项四</li>
+            </ol>
+        </div>
+    </div>
+</body>
+
+</html>
