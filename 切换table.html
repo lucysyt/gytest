@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	 <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	 <style type="text/css">
+#mytab{
+
+}
+#mytab ul li{display: inline-block;cursor: pointer;
+
+}
+ #showtab{display: block;}
+
+	 #showtab .divs{
+	 	display: none;
+	 }
+
+	  #showtab .div1{
+	 	display: block;
+	 }
+	 </style>
+</head>
+<body>
+	<div id="mytab">
+		<ul>
+		<li>选项一</li>
+		<li>选项二</li>
+		<li>选项三</li>
+		<li>选项四</li>
+		</ul>
+	</div>
+	<div id="showtab">
+		<div class="div1">1</div>
+		<div class="divs">2</div>
+		<div class="divs">3</div>
+		<div class="divs">4</div>
+	</div>
+
+	<script type="text/javascript">
+
+
+	$(document).ready(function(){
+
+
+		$("#mytab ul").find("li").click(function(){
+
+			var num=$(this).index();
+
+			$("#showtab").find("div").eq(num).removeClass("divs").addClass("div1").siblings("div").addClass("divs").removeClass("div1");
+		})
+
+		// var showtab=$("#showtab div");
+
+		// setInterval(function(){
+
+		// 	if (var _now=0;_now==showtab.size()-1) {_now=0;}
+
+		// 	else{_now++;}
+
+		// 	$("#showtab").find("div").eq(_now).removeClass("divs").addClass("div1").siblings("div").addClass("divs").removeClass("div1");
+
+		// },1500)
+
+
+
+	})
+
+		
+	</script>
+</body>
+</html>

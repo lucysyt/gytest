@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>轮播图手写</title>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<style type="text/css">
+	.main{width: 500px;height: 400px;margin: 0 auto;}
+	.myslid{width: 500px;height: 300px;overflow: hidden;position: absolute;}
+	.myslidtwo{width: 2000px;overflow: hidden;position: absolute;}
+	.myslidtwo img{width: 500px; height:300px; float: left;}
+	.daohang{width: 300px;position: absolute;top:300px;}
+	.daohang ol li{float:left;width: 50px;height: 30px;list-style: none; background-color: #eeeeee;cursor: pointer;}
+	ol li.current{
+		background: #0f0;
+	}
+	</style>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		var _now=0;
+		var myslidtwo=$(".myslidtwo");
+		var daohang=$(".daohang ol li");
+		var myslid=$(".myslid").eq(0).width();
+
+		daohang.click(function(){
+
+			var index=$(this).index();
+
+			$(this).addClass("current").siblings().removeClass();
+
+			myslidtwo.animate({"left":-myslid*index},500);
+		});
+
+		setInterval(function(){
+
+			if(_now==daohang.size()-1){_now=0;}
+			else{_now++;}
+			daohang.eq(_now).addClass("current").siblings().removeClass();
+			myslidtwo.animate({"left":-myslid*_now},500);
+
+		},5000)
+		
+	})
+	</script>
+</head>
+<body>
+	<div class="main">
+		<div class="myslid">
+			<div class="myslidtwo">
+				<img src="img/lrtk.jpg">
+				<img src="img/lrtk.jpg">
+				<img src="img/lrtk.jpg">
+				<img src="img/lrtk.jpg">
+			</div>
+		</div>
+		<div class="daohang">
+			<ol>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+			</ol>
+		</div>
+	</div>
+</body>
+</html>

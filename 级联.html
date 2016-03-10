@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		//手动输入交割地判断
+		$("#selectChange").change(function(){
+
+			var p1=$(this).children('option:selected').val();
+
+			if (p1=="手动输入交割地") {
+
+				$("#jgd").attr("disabled",false);
+				//$(this).attr("disabled",true);
+
+				$("#jgd").focus();
+			}
+			else{
+				$("#jgd").attr({"disabled":true,"value":""})
+				// $("#jgd").attr("disabled",true);
+			           // $("input").attr("value","");
+			}
+
+		})
+		//select级联判断
+		var anhui_city = ["合肥", "芜湖", "蚌埠"];			
+		var hebei_city = ["北京", "燕郊"];
+		var shandong_city = ["济南", "青岛"];
+		
+		$("#province").change(function(){
+
+			var selected_value = $(this).val();
+
+			if(selected_value == "select"){
+				$("select[name='city']").empty();
+				
+			}else if(selected_value == "anhui"){ //安徽
+				$("select[name='city']").empty();
+				//循环添加
+				for(var i = 0; i < anhui_city.length; i++) {
+					var option = $("<option>").val(anhui_city[i]).text(anhui_city[i]);
+						$("select[name='city']").append(option);
+				}
+				
+			}else if(selected_value == "hebei"){ //河北
+				$("select[name='city']").empty();
+				//循环添加
+				for(var i = 0; i < hebei_city.length; i++) {
+					var option = $("<option>").val(hebei_city[i]).text(hebei_city[i]);
+						$("select[name='city']").append(option);
+				}
+				
+			}else if(selected_value == "shandong"){ //山东
+					$("select[name='city']").empty();
+				//循环添加
+				for(var i = 0; i < shandong_city.length; i++) {
+					var option = $("<option>").val(shandong_city[i]).text(shandong_city[i]);
+						$("select[name='city']").append(option);
+				}
+			}
+		})
+		
+
+	})
+
+	</script>
+</head>
+<body>
+	<form>
+		<select id="selectChange">
+			<option  selected="selected">请选择</option>
+			<option>手动输入交割地</option>
+			<option>国烨化工</option>
+			<option>银瑞</option>
+			<option>中烨</option>
+		</select>
+		<input id="jgd" type="text" value="" placeholder="手动输入交割地" disabled>
+		<br>
+		<select id="province" name="province">
+			<option value="select">请选择..</option>
+			<option value="anhui">安徽</option>
+			<option value="hebei">河北</option>
+			<option value="shandong">山东</option>
+		</select>
+
+		<select name="city"></select>
+
+	</form>
+</body>
+</html>

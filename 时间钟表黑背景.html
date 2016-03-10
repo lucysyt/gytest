@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数字翻页（时钟翻页）</title>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/page/jquery.flipcountdown.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/page/jquery.flipcountdown.css" />
+</head>
+<body>
+	<div id="retroclockbox1"></div>
+	<div id="retroclockbox_float"></div>
+
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$(function(){
+			
+			$('#retroclockbox1').flipcountdown();
+			$('#retroclockbox_float').flipcountdown({size:'sm',tick:21199063037});
+
+		})
+	})
+	</script>
+</body>
+</html>
