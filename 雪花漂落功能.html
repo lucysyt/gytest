@@ -105,6 +105,38 @@
     </style>
 </head>
 <body>
+<!--文字放大效果-->
+<svg width="320" height="320" xmlns="http://www.w3.org/2000/svg">
+    <g>
+        <text font-family="microsoft yahei" font-size="80" y="100" x="100">马</text>
+        <animateTransform attributeName="transform" begin="0s" dur="3s"  type="scale" from="1" to="1.5" repeatCount="indefinite"/>
+    </g>
+</svg>
+<!--有过程的慢慢移动到60-->
+<svg width="320" height="320" xmlns="http://www.w3.org/2000/svg">
+    <g>
+        <text font-family="microsoft yahei" font-size="120" y="160" x="160">
+            马
+            <animate attributeName="x" from="160" to="60" begin="0s" dur="3s" repeatCount="indefinite" />
+        </text>
+    </g>
+</svg>
+<!--三秒后，文字离左边位置为60-->
+<svg width="320" height="320" xmlns="http://www.w3.org/2000/svg">
+    <g>
+        <text font-family="microsoft yahei" font-size="120" y="160" x="160">
+            马
+            <set attributeName="x" attributeType="XML" to="60" begin="3s" />
+        </text>
+    </g>
+</svg>
+<!--360度立体旋转，只变x轴的值-->
+<svg width="320" height="320" xmlns="http://www.w3.org/2000/svg">
+    <g>
+        <text font-family="microsoft yahei" font-size="120" y="160" x="160">雨</text>
+        <animateTransform attributeName="transform" begin="0s" dur="10s" type="rotate" from="0 160 160" to="360 160 160" repeatCount="indefinite"/>
+    </g>
+</svg>
 <div id="snowzone"></div>
 <script>
     (function () {

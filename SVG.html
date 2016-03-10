@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>svg结合animate得来的动画</title>
+</head>
+<body>
+<p>
+    // svg指当前svg DOM元素
+    // 暂停
+    svg.pauseAnimations();
+
+    // 重启动
+    svg.unpauseAnimations()
+</p>
+<p>例如下面这个马儿，点击就会暂停，再点就会重新运动。<br>
+    <svg width="320" height="320" xmlns="http://www.w3.org/2000/svg" onclick="if (this.paused != true) { this.pauseAnimations(); this.paused = true; } else  { this.unpauseAnimations(); this.paused = false; }">  <g transform="rotate(313.377 160 160)">     <text font-family="microsoft yahei" font-size="120" y="160" x="160">马</text>    <animateTransform attributeName="transform" begin="0s" dur="10s" type="rotate" from="0 160 160" to="360 160 160" repeatCount="indefinite"></animateTransform>  </g></svg></p>
+<p>动画只玩执行完整3个 + 一个1/3个动画。因为repeat总时间就10s</p>
+<svg width="320" height="200" font-family="microsoft yahei" xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+    <text font-family="microsoft yahei" font-size="120" y="160" x="160">马
+        <animate attributeName="x" to="60" dur="3s" repeatCount="indefinite" repeatDur="10s"/>
+    </text>
+</svg>
+<p>SVG animation beginElement方法实例页面(点击执行动画)</p>
+<svg id="svg" width="320" height="200" xmlns="http://www.w3.org/2000/svg">
+    <text font-family="microsoft yahei" font-size="120" y="160" x="160">马
+        <animate attributeName="x" to="60" begin="indefinite" dur="3s"/>
+    </text>
+</svg>
+<script>
+    var animate = document.getElementsByTagName("animate")[0];
+    if (animate) {
+        document.getElementById("svg").onclick = function () {
+            animate.beginElement();
+        };
+    }
+</script>
+<p>a链接触发动画执行</p>
+<svg width="320" height="200" font-family="microsoft yahei" xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+    <text font-size="120" y="160" x="160">马
+        <animate id="animate" attributeName="x" to="60" begin="indefinite" dur="3s" repeatCount="indefinite"/>
+    </text>
+    <a xlink:href="#animate">
+        <text x="10" y="30" fill="#cd0000" font-size="30">点击我</text>
+    </a>
+</svg>
+<p>accessKey-value定义快捷键。即按下某个按键动画开始。语法为：accessKey(" character "). character表示快捷键所在的字符，举个例子，按下s键动画走起(火狐有作用)</p>
+<svg width="320" height="200" xmlns="http://www.w3.org/2000/svg">
+    <text font-family="microsoft yahei" font-size="120" y="160" x="160">马
+        <animate attributeName="x" to="60" begin="accessKey(k)" dur="3s" repeatCount="indefinite"/>
+    </text>
+</svg>
+<p>begin="x.repeat(2)"指id为x的元素的动画重复2次后执行~~</p>
+<svg width="320" height="200" xmlns="http://www.w3.org/2000/svg">
+    <text font-family="microsoft yahei" font-size="120" y="160" x="160">马
+        <animate id="x" attributeName="x" to="60" begin="0s" dur="3s" repeatCount="indefinite"/>
+        <animate attributeName="y" to="100" begin="x.repeat(2)" dur="3s" fill="freeze"/>
+    </text>
+</svg>
+<p>你想点击圆圈圈2秒钟后马儿才跑，很简单，偏移时间加上就可以了——begin="circle.click+2s".</p>
+<svg id="svg" width="320" height="200" xmlns="http://www.w3.org/2000/svg">
+    <circle id="circle" cx="100" cy="100" r="50"></circle>
+    <text font-family="microsoft yahei" font-size="120" y="160" x="160">马
+        <animate attributeName="x" to="60" begin="circle.click+2s" dur="3s"/>
+    </text>
+</svg>
+<p>总结下，也就是from-to动画、from-by动画、to动画、by动画以及values动画</p>
+
+<!--马儿来回跑(values设置关键点)-->
+<svg width="320" height="200" xmlns="http://www.w3.org/2000/svg">
+    <text font-family="microsoft yahei" font-size="120" y="150" x="160">
+        马
+        <animate attributeName="x" values="160;40;160" dur="3s" repeatCount="indefinite"/>
+    </text>
+</svg>
+<!--实现的是马儿入山影无踪的意境(将动画组合即可得到新的效果，并且同时进行)-->
+<svg width="320" height="200" xmlns="http://www.w3.org/2000/svg">
+    <text font-family="microsoft yahei" font-size="120" y="160" x="160">马
+        <animate attributeName="x" from="160" to="60" begin="0s" dur="3s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" from="1" to="0" begin="0s" dur="3s" repeatCount="indefinite"/>
+    </text>
+</svg>
+<!--更逼真的马儿奔跑效果-->
+<svg width="360" height="200" xmlns="http://www.w3.org/2000/svg">
+    <text font-family="microsoft yahei" font-size="40" x="0" y="0" fill="#cd0000">马
+        <animateMotion path="M10,80 q100,120 120,20 q140,-50 160,0" begin="0s" dur="3s" rotate="auto"
+                       repeatCount="indefinite"/>
+    </text>
+    <path d="M10,80 q100,120 120,20 q140,-50 160,0" stroke="#cd0000" stroke-width="2" fill="none"/>
+</svg>
+<!--沿着设置好的线路行走的文字-->
+<svg width="360" height="200" xmlns="http://www.w3.org/2000/svg">
+    <text font-family="microsoft yahei" font-size="40" x="0" y="0" fill="#cd0000">马
+        <animateMotion path="M10,80 q100,120 120,20 q140,-50 160,0" begin="0s" dur="3s" repeatCount="indefinite"/>
+        <path d="M10,80 q100,120 120,20 q140,-50 160,0" stroke="#cd0000" stroke-width="2" fill="none"/>
+    </text>
+</svg>
+</body>
+</html>
