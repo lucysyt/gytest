@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>漂亮的弹窗插件</title>
+    <link rel="stylesheet" href="css/sweetalert.css">
+</head>
+
+<body>
+    <div class="row text-center">
+        <div class="col-sm-6 h-100 p-lg">
+            <p>基本消息</p>
+            <button class="btn btn-primary btn-sm demo1">打开示例</button>
+        </div>
+        <div class="col-sm-6 h-100 p-lg">
+            <p>成功提示</p>
+            <button class="btn btn-success btn-sm demo2">打开示例</button>
+        </div>
+        <div class="col-sm-6 h-100 p-lg">
+            <p>警告信息</p>
+            <button class="btn btn-warning btn-sm demo3">打开示例</button>
+        </div>
+        <div class="col-sm-6 h-100 p-lg">
+            <p>通过传参可以自定义取消按钮</p>
+            <button class="btn btn-danger btn-sm demo4">打开示例</button>
+        </div>
+    </div>
+    <script src="http://www.zi-han.net/theme/hplus/js/jquery.min.js?v=2.1.4"></script>
+    <script src="http://www.zi-han.net/theme/hplus/js/bootstrap.min.js?v=3.3.6"></script>
+    <script type="text/javascript" src="js/sweetalert.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        swal("Here's a message!", "It's pretty, isn't it?","success",function(){alert(1)});
+
+        //window.location.href="http://www.baidu.com";
+    })
+    </script>
+</body>
+
+</html>

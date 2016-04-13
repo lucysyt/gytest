@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>输入下拉</title>
+
+	<link rel="stylesheet" type="text/css" href="css/css/bootstrap.min.css">
+
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	
+</head>
+<body>
+	<form class="form-inline">
+		<div class="form-group">
+			<label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+			<div class="input-group">
+				<div class="input-group-addon">品名</div>
+				<input type="text" class="form-control" value="" id="productcon" placeholder="品名">
+				<div class="input-group-addon">
+					<div class="btn-group">
+						<button type="button" class=""  data-toggle="dropdown">
+							<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" id="product" role="menu">
+							<li><a href="#">功能</a></li>
+							<li><a href="#">另一个功能</a></li>
+							<li><a href="#">其他</a></li>
+							<li><a href="#">分离的链接</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<button type="submit" class="btn btn-primary">Transfer cash</button>
+	</form>
+<script type="text/javascript">
+
+		$("#product li").click(function() {
+
+			// body...
+			var s=$(this).text();
+
+            
+            $('#productcon').val(s);
+
+		});
+
+
+
+	</script>
+</body>
+</html>

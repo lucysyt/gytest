@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	#div1{}
+	#div1 div{width: 200px;height: 150px;background-color: #eee;display: none;}
+	.active{background-color: red;}
+	</style>
+	<script type="text/javascript">
+	window.onload=function(){
+		
+		var oDiv1=document.getElementById("div1");
+		var oBtn=oDiv1.getElementsByTagName("input");
+		var oDiv2=oDiv1.getElementsByTagName("div");
+
+		for (var i = oBtn.length - 1; i >= 0; i--) {
+
+			oBtn[i].index=i;
+
+			oBtn[i].onclick=function(){
+
+				for (var i = oBtn.length - 1; i >= 0; i--) {
+
+					oBtn[i].className="";
+
+					oDiv2[i].style.display="none";
+
+				};
+
+				this.className="active";
+
+				oDiv2[this.index].style.display="block";
+
+			}
+		};
+	}
+	</script>
+</head>
+<body>
+	<div id="div1">
+		<input class="active" type="button" value="这是一">
+		<input type="button" value="这是二">
+		<input type="button" value="这是三">
+		<input type="button" value="这是四">
+		<div style="display:block;">1111</div>
+		<div>2222</div>
+		<div>3333</div>
+		<div>4444</div>
+	</div>
+</body>
+</html>

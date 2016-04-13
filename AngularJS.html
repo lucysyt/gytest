@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS练习</title>
+    <script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+
+<body>
+    <!--  <div ng-app="" ng-init="firstname='我是绑定数据'">
+        <input type="text" ng-model="name">
+        <h1>我的名字：{{name}}</h1>
+        绑定的数据：<span ng-bind="firstname"></span>
+        <p>计算表达式：{{5+5}}</p>
+
+    </div> -->
+    <!-- <div ng-app="myapp" ng-controller="myCtrl">
+        <input type="text" ng-model="firstname">
+        <input type="text" ng-model="lastname"> 姓名：{{firstname+''+lastname}}
+        <script type="text/javascript">
+      var  myapp = angular.module('myapp', []);
+        myapp.controller("myCtrl", function($scope) {
+            // body...
+            $scope.firstname = "单";
+            $scope.lastname = "雨婷";
+        });
+        </script>
+    </div> -->
+   <!--  <div ng-app="" ng-init="quantity=2;cost=5">
+    	{{quantity*cost}}
+    	<span ng-bind="quantity*cost"></span>
+    </div>
+ -->
+<!--  <div ng-app="" ng-init="positong={name:'haha',sex:'women'}">
+ 	<span>{{positong.name+''+positong.sex}}</span>
+ 	<span ng-bind="positong.name+'这是绑定数据'+positong.sex"></span>
+ </div> -->
+ <p>取对象</p>
+ <div ng-app="" ng-init="names=[
+{name:'Jani',country:'Norway'},
+{name:'Hege',country:'Sweden'},
+{name:'Kai',country:'Denmark'}]">
+ 	<span ng-repeat="x in names">
+ 		{{x.name+""+x.country}}
+ 	</span>
+ </div>
+
+</body>
+
+</html>

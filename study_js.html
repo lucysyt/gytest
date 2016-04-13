@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>学习js</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+        #div2{
+            width: 100px;
+            height: 100px;
+            background: #0088cc;
+            display: none;
+        }
+    </style>
+    <script type="text/javascript">
+
+    if(window.addEventListener){
+
+      window.addEventListener("load",ToValue,false);
+      window.addEventListener("load",ToChange,false);
+      window.addEventListener("load",ToDisplay,false);
+    }
+
+    else{
+
+      window.attachEvent("onload",ToValue);
+      window.attachEvent("onload",ToChange);
+      window.attachEvent("onload",ToDisplay);
+
+    }
+
+    
+
+        //改变input框的值
+        function ToValue(){
+            var valueId=document["getElementById"]("inputId");
+            valueId["value"]="456";
+        }
+
+        //改变div1的样式(传参)
+        function ToChange(name,value){
+            var div1=document.getElementById("div1");
+            div1.style[name]=value;
+        }
+
+        //div显示隐藏
+        function ToDisplay(){
+
+            var ToDisplay=document.getElementById("div2");
+
+            if(ToDisplay.style.display=="block"){
+
+                ToDisplay.style.display="none";
+            }
+            else{
+                ToDisplay.style.display="block";
+            }
+        };
+
+    
+window.onload=function(){
+        //全选 反选 不选
+
+var allchecked=document.getElementById("allchecked");
+var allcancel=document.getElementById("allcancel");
+var Tofan=document.getElementById("Tofan");
+var divCheck=document.getElementById("checkID");
+var Divinput=divCheck.getElementsByTagName("input");
+
+allchecked.onclick=function(){
+
+   for(var i=0;i<Divinput.length;i++){
+
+     Divinput[i].checked=true;
+}
+};
+
+
+allcancel.onclick=function(){
+
+    for(var i=0;i<Divinput.length;i++){
+
+        Divinput[i].checked=false;
+
+    }
+};
+
+Tofan.onclick=function(){
+    for (var i = Divinput.length - 1; i >= 0; i--) {
+
+       if( Divinput[i].checked==true){
+
+        Divinput[i].checked=false;
+
+       }
+       else
+
+        Divinput[i].checked=true;
+    
+    }
+};
+
+
+}
+
+
+    </script>
+</head>
+<body>
+<input type="text" value="123" id="inputId"/>
+<input type="button" value="改变值" onclick="ToValue()"/>
+
+<input type="button" value="改变宽" onclick="ToChange('width','400px')"/>
+<input type="button" value="改变高" onclick="ToChange('height','400px')"/>
+<input type="button" value="改变背景颜色" onclick="ToChange('background','#000')"/>
+<div id="div1"></div>
+
+<input type="button"  value="点击显示隐藏" onclick="ToDisplay()"/>
+<div id="div2"></div>
+
+<br><br><br><br>
+<button type="button" id="allchecked">全选</button>
+<button type="button" id="allcancel">取消</button>
+<button type="button" id="Tofan">反选</button>
+
+<div id="checkID">
+    <input type="checkbox">
+    <input type="checkbox">
+    <input type="checkbox">
+    <input type="checkbox">
+    <input type="checkbox">
+    <input type="checkbox"> 
+    <input type="checkbox">
+</div>
+
+
+</body>
+</html>
