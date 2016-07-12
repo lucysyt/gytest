@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+    <meta charset="UTF-8">
+    <title>anjulark练习02</title>
+    <script src="js/angular.min.js"></script>
+</head>
+<body>
+<div ng-controller="HelloAngular">
+    <p>{{greetings.text}},Angular</p>
+</div>
+<script>
+    function HelloAngular($scope) {
+        $scope.greetings = {
+            text: 'Hello'
+        }
+    }
+</script>
+</body>
+</html>
