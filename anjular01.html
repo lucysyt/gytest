@@ -1,10 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="MyModule">
 <head>
     <meta charset="UTF-8">
     <title>anjulark练习1</title>
+    <script src="js/angular.min.js"></script>
 </head>
 <body>
-
+<hello></hello>
 </body>
+
+<script>
+    var myModule = angular.module("MyModule", []);
+    myModule.directive("hello", function() {
+        return {
+            restrict: 'E',
+            template: '<div>Hi everyone!第一个练习项目</div>',
+            replace: true
+        }
+    });
+</script>
 </html>

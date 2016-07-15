@@ -1,20 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="">
 <head>
     <meta charset="UTF-8">
-    <title>anjulark练习02</title>
-    <script src="js/angular.min.js"></script>
+    <title>anjulark练习1</title>
 </head>
 <body>
 <div ng-controller="HelloAngular">
-    <p>{{greetings.text}},Angular</p>
+    <p>{{greeting.text}},Angular</p>
 </div>
-<script>
-    function HelloAngular($scope) {
-        $scope.greetings = {
-            text: 'Hello'
-        }
-    }
-</script>
+<script src="js/angular.min.js" type="javascript"></script>
+<script src="js/HelloAngular_MVC.js" type="javascript"></script>
 </body>
 </html>
