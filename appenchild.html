@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>appendchild</title>
+		<script type="text/javascript">
+			window.onload = function() {
+				var oBtn = document.getElementById("oBtn");
+				var oUl = document.getElementById("oUl");
+
+				oBtn.onclick = function() {
+
+					var oLi = document.createElement("li");
+					var Otext = document.getElementById("text").value;
+					oLi.innerHTML = Otext;
+					var liLen = oUl.getElementsByTagName("li");
+					if (liLen.length > 0) {
+						oUl.insertBefore(oLi,liLen[0]);
+					} else {
+						oUl.appendChild(oLi);
+					}
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<input type="button" id="oBtn" value="添加li" />
+		<input type="text" id="text" />
+		<ul id="oUl"></ul>
+	</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			window.onload=function(){
+				var oUl=document.getElementById("oUl");
+				var oAi=oUl.getElementsByTagName("a");
+				for(var i=0;i<oAi.length;i++){
+					oAi[i].onclick=function(){
+						oUl.removeChild(this.parentNode);
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<ul id="oUl">
+			<li>asdfsafdasfd<a href="###">删除</a></li>
+			<li>asdfsafdasfd<a href="###">删除</a></li>
+			<li>地方<a href="###">删除</a></li>
+			<li>asdfsafd大概asfd<a href="###">删除</a></li>
+			<li>地方跟北方大部分<a href="###">删除</a></li>
+		</ul>
+	</body>
+</html>
