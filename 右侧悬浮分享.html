@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>分享到js</title>
+		<style type="text/css">
+			#div1 {
+				width: 150px;
+				height: 200px;
+				position: absolute;
+				left: -150px;
+				top: 100px;
+				background-color: green;
+			}
+			
+			#spans {
+				display: block;
+				position: absolute;
+				width: 20px;
+				height: 100px;
+				top: 10px;
+				right: -20px;
+				background-color: red;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function() {
+				var spanId = document.getElementById("spans");
+				spanId.onmouseover = function() {
+					startMove(0);
+				}
+				spanId.onmouseout = function() {
+					startMove(-150);
+				}
+			}
+			var timer = null;
+
+			function startMove(iTarget) {
+
+				var div1 = document.getElementById("div1");
+				var speed = 0;
+				clearInterval(timer);
+
+				timer = setInterval(function() {
+
+					if(div1.offsetLeft > iTarget) {
+						
+						speed = -10;
+						
+					} else {
+						
+						speed = 10;
+						
+					}
+
+					if(div1.offsetLeft == iTarget) {
+
+						clearInterval(timer);
+
+					} else {
+
+						div1.style.left = div1.offsetLeft + speed + "px";
+
+					}
+
+				}, 30)
+
+			}
+		</script>
+	</head>
+
+	<body>
+		<div id="div1">
+			<span id="spans">分享到</span>
+		</div>
+	</body>
+
+</html>

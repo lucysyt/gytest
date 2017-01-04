@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>js 缓冲运动</title>
+		<style>
+			#div1 {
+				position: absolute;
+				top: 200px;
+				left: 1200px;
+				width: 100px;
+				height: 100px;
+				background-color: red;
+			}
+			
+			#div2 {
+				position: absolute;
+				left: 600px;
+				top: 0;
+				width: 1px;
+				height: 600px;
+				background-color: black;
+			}
+		</style>
+		<script type="text/javascript">
+			var moveBtn = document.getElementById("move");
+			var timer = null;
+
+			function startMove() {
+				var div1 = document.getElementById("div1");
+
+				timer = setInterval(function() {
+
+					var speed = (600 - div1.offsetLeft) / 10;
+					console.log(Math.floor(speed));
+					speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+
+					div1.style.left = div1.offsetLeft + speed + "px";
+					if(speed == 0) {
+
+						clearInterval(timer);
+					}
+
+				}, 30)
+
+			}
+		</script>
+	</head>
+
+	<body>
+		<input type="button" value="开始缓冲运动" id="move" onclick="startMove()" />
+		<div id="div1">
+
+		</div>
+		<div id="div2"></div>
+	</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#oDiv { position: absolute; background: #E1E1E8;width: 100px; height: 100px;}
+		</style>
+		<script type="text/javascript">
+		var timer=null;
+			function gogogo(){
+				var oDiv=document.getElementById("oDiv");
+				
+				clearInterval(timer);
+				 timer=setInterval(function(){
+		           if(oDiv.offsetLeft>300){
+		           	clearInterval(timer);
+		           }else{
+		           	oDiv.style.left=oDiv.offsetLeft+7+'px';
+		           }
+		        },30);
+			}
+		</script>
+	</head>
+	<body>
+		<input type="button" name="" id="obtn" value="运动" onclick="gogogo()" />
+		<div id="oDiv"></div>
+	</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>右下角悬浮框</title>
+		<style type="text/css">
+			#div1 {position: absolute;right: 0;bottom: 0;width: 150px;height: 100px;background: red;}
+		</style>
+		<script type="text/javascript">
+			window.onscroll=function(){
+				var div1=document.getElementById("div1");
+				var scrolltop=document.documentElement.scrollTop||document.body.scrollTop;
+				
+				
+					console.log(scrolltop);
+					document.getElementById("iText").value=scrolltop;
+					startTop(document.documentElement.clientHeight-div1.offsetHeight+scrolltop);					
+				
+			};
+			var timer=null;
+			function startTop(itarget){
+				var div1=document.getElementById("div1");
+				clearInterval(timer);
+				timer=setInterval(function(){
+					
+					var speed=(itarget-div1.offsetTop)/4;
+					
+					speed=speed>0?Math.ceil(speed):Math.floor(speed);
+					if(div1.offsetTop==itarget){
+						clearInterval(timer);
+					}else{
+						div1.style.top=div1.offsetTop+speed+"px";
+					}
+
+				},30)
+				
+			}
+		</script>
+
+
+	</head>
+	<body style="height: 2000px;">
+		<input type="text" name="iText" id="iText" value="" style="position: fixed;" />
+		<div id="div1">
+			
+		</div>
+	</body>
+</html>

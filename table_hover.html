@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			window.onload = function() {
+				var oTab = document.getElementById("oTab");
+				var oTr = "";
+
+				var oName = document.getElementById("nameo");
+				var oAge = document.getElementById("ageo");
+				var addTr = document.getElementById("addtr");
+				var id = oTab.tBodies[0].rows.length + 1;
+
+				//添加行事件
+				addTr.onclick = function() {
+
+					var oTr = document.createElement("tr");
+
+					var otd = document.createElement("td");
+					otd.innerHTML = id++;
+					oTr.appendChild(otd);
+
+					var otd = document.createElement("td");
+					otd.innerHTML = oName.value;
+					oTr.appendChild(otd);
+
+					var otd = document.createElement("td");
+					otd.innerHTML = oAge.value;
+					oTr.appendChild(otd);
+
+					oTab.tBodies[0].appendChild(oTr);
+					
+					//隔行变色，hover事件
+					bianse();
+
+				}
+
+				//隔行变色，hover事件
+				bianse();
+
+				function bianse() {
+					
+					for (var i = 0; i < oTab.tBodies[0].rows.length; i++) {
+						
+						console.log(oTab.tBodies[0].rows.length);
+						
+						oTab.tBodies[0].rows[i].onmouseover = function() {
+							
+							oTr = this.style.background;
+
+							this.style.background = "gray";
+
+						}
+						oTab.tBodies[0].rows[i].onmouseout = function() {
+
+							this.style.background = oTr;
+
+						}
+						if (i % 2) {
+
+							oTab.tBodies[0].rows[i].style.background = "red";
+
+						} else {
+
+							oTab.tBodies[0].rows[i].style.background = "";
+						}
+					}
+				}
+
+			}
+		</script>
+	</head>
+
+	<body>
+		<input type="text" value="name" id="nameo" />
+		<input type="text" value="age" id="ageo" />
+		<input type="button" value="添加行" id="addtr" />
+		<table id="oTab" border="1" width="500">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>姓名</th>
+					<th>年龄</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>张三</td>
+					<td>20</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>李四</td>
+					<td>29</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>王二</td>
+					<td>24</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>成龙</td>
+					<td>29</td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+
+</html>

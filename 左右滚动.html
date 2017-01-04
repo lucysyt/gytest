@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>div左右滚动</title>
+		<script src="js/jquery.min.js"></script>
+		<style>
+		h4 {text-align: center;}
+			#div1 {
+				margin: 0 auto;
+				width: 1200px;
+				height: 200px;
+				background-color: #e2e2e2;
+			}
+			
+			#div2 {
+				position: relative;
+				width: 1200px;
+				height: 200px;
+				overflow: hidden;
+			}
+			
+			#div2 ul {
+				position: absolute;
+				left: 0;
+				top: 0;
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			
+			#div2 ul li {
+				float: left;
+				margin-right: 10px;
+				width: 125px;
+				height: 200px;
+				background-color: mediumseagreen;
+				display: block;
+			}
+			#div2 ul li img {
+				width: 125px;
+				height: 200px;
+			}
+			.slide {
+				position: absolute;
+				width: 20px;
+				height: 60px;
+				font-size: 20px;
+				background: red;
+				cursor: pointer;
+			}
+			
+			#slideleft {
+				left: 329px;
+				top: 100px;
+			}
+			
+			#slideright {
+				right: 329px;
+				top: 100px;
+			}
+		</style>
+
+	</head>
+
+	<body>
+<h4>左右滚动，一次走一个，鼠标放上去就会停止滚动，离开就会重新开始运动</h4>
+		<div id="div1">
+			<div class="slide" id="slideleft" onclick="scrolls.slideLeft()">向左</div>
+			<div id="div2">
+				<ul id="div2Ul">
+					<li><img src="scroll/1.jpg"></li>
+					<li><img src="scroll/2.jpg"></li>
+					<li><img src="scroll/3.jpg"></li>
+					<li><img src="scroll/4.jpg"></li>
+					<li><img src="scroll/5.jpg"></li>
+					<li><img src="scroll/6.jpg"></li>
+					<li><img src="scroll/7.jpg"></li>
+					<li><img src="scroll/8.jpg"></li>
+					<li><img src="scroll/1.jpg"></li>
+					<li><img src="scroll/2.jpg"></li>
+					<li><img src="scroll/3.jpg"></li>
+					<li><img src="scroll/4.jpg"></li>
+				</ul>
+			</div>
+			<div class="slide" id="slideright" onclick="scrolls.slideRight()">向右</div>
+		</div>
+	</body>
+<script type="text/javascript" src="js/scroolround.js" ></script>
+</html>

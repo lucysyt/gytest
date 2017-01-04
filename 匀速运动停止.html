@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>匀速运动纯js</title>
+		<style type="text/css">
+			#div1 {
+				position: absolute;
+				top: 100px;
+				left: 0;
+				width: 100px;
+				height: 100px;
+				background: red;
+			}
+			
+			#div2 {
+				position: absolute;
+				top: 0;
+				left: 300px;
+				width: 1px;
+				height: 300px;
+				background: red;
+			}
+			
+			#div3 {
+				position: absolute;
+				top: 0;
+				left: 600px;
+				width: 1px;
+				height: 300px;
+				background: red;
+			}
+		</style>
+		<script type="text/javascript">
+			var timer = null;
+			function startMove(itarget) {
+				var div1 = document.getElementById("div1");
+				clearInterval(timer);
+				timer = setInterval(function() {
+					var speed = 0;
+					if(div1.offsetLeft > itarget) {
+						speed = -7;
+					} else {
+						speed = 7;
+					}
+					if(Math.abs(itarget-div1.offsetLeft) <=7) {
+						clearInterval(timer);
+						div1.style.left=itarget+"px";
+					}else{
+						
+						div1.style.left=div1.offsetLeft+speed+"px";
+					}
+				}, 30);
+
+			}
+		</script>
+	</head>
+
+	<body>
+		<input type="button" name="匀速运动到300" value="匀速运动到300" onclick="startMove(300)" />
+		<input type="button" name="匀速运动到600" value="匀速运动到600" onclick="startMove(600)" />
+		<div id="div1"></div>
+		<div id="div2"></div>
+		<div id="div3"></div>
+	</body>
+
+</html>

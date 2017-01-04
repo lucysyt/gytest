@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>anjulark练习3制作</title>
+		<script src="js/angular.min.js"></script>
+	</head>
+
+	<body>
+		<div ng-controller="myController">
+			<p>走动的时钟</p>
+			<p>{{clock.now}}</p>
+		</div>
+	</body>
+
+	<script>
+		angular.module("myApp", [])
+			.controller('myController', function($scope) {
+				$scope.clock= {
+					now: new Date()
+				};
+				var updateClock = function() {
+					$scope.clock.now = new Date()
+				};
+				setInterval(function() {
+					$scope.$apply(updateClock)
+				}, 1000);
+				updateClock();
+			})
+	</script>
+
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="description" content="CSS3 clip-path之polygon绘图与动画 » 张鑫旭-鑫空间-鑫生活" />
+		<meta name="description" content="张鑫旭web前端学习实例页面之CSS3 clip-path之polygon绘图与动画" />
+		<meta name="keywords" content="CSS3, clip-path, polygon, 动画" />
+		<meta name="author" content="张鑫旭, zhangxinxu" />
+		<title>CSS3 clip-path之polygon绘图与动画 » 张鑫旭-鑫空间-鑫生活</title>
+		<link rel="stylesheet" href="../css/demo.css" type="text/css" />
+		<link rel="stylesheet" href="../css/hl.css" type="text/css" />
+		<style>
+			.demo p {
+				height: 30px;
+				margin: 10px 0 0;
+			}
+			
+			.triangle {
+				display: block;
+				height: 20px;
+				background-color: currentColor;
+				-webkit-transition: all .25s;
+				transition: all .25s;
+			}
+			
+			.path1 {
+				-webkit-clip-path: polygon(5px 10px, 16px 3px, 16px 17px);
+				clip-path: polygon(5px 10px, 16px 3px, 16px 17px);
+			}
+			
+			.path2 {
+				-webkit-clip-path: polygon(3px 5px, 17px 5px, 10px 16px);
+				clip-path: polygon(3px 5px, 17px 5px, 10px 16px);
+			}
+			
+			.path3 {
+				-webkit-clip-path: polygon(5px 10px, 16px 3px, 16px 10px, 26px 10px, 26px 3px, 37px 10px, 26px 17px, 26px 10px, 16px 10px, 16px 17px);
+				clip-path: polygon(5px 10px, 16px 3px, 16px 10px, 26px 10px, 26px 3px, 37px 10px, 26px 17px, 26px 10px, 16px 10px, 16px 17px);
+			}
+			
+			.path4 {
+				-webkit-clip-path: polygon(5px 10px, 16px 3px, 16px 10px, 36px 10px, 36px 3px, 47px 10px, 36px 17px, 36px 10px, 16px 10px, 16px 17px);
+				clip-path: polygon(5px 10px, 16px 3px, 16px 10px, 36px 10px, 36px 3px, 47px 10px, 36px 17px, 36px 10px, 16px 10px, 16px 17px);
+			}
+			
+			.path5 {
+				-webkit-clip-path: polygon(5px 10px, 16px 3px, 16px 9px, 36px 9px, 36px 3px, 47px 10px, 36px 17px, 36px 10px, 16px 10px, 16px 17px);
+				clip-path: polygon(5px 10px, 16px 3px, 16px 9px, 36px 9px, 36px 3px, 47px 10px, 36px 17px, 36px 10px, 16px 10px, 16px 17px);
+			}
+			
+			.path6 {
+				-webkit-clip-path: polygon(5px 10px, 16px 3px, 16px 9px, 36px 9px, 36px 3px, 47px 10px, 36px 17px, 36px 11px, 16px 11px, 16px 17px);
+				clip-path: polygon(5px 10px, 16px 3px, 16px 9px, 36px 9px, 36px 3px, 47px 10px, 36px 17px, 36px 11px, 16px 11px, 16px 17px);
+			}
+			
+			.path7 {
+				-webkit-clip-path: polygon(5px 11px, 5px 9px, 16px 3px, 26px 3px, 40px 9px, 48px 15px, 48px 5px, 40px 11px, 26px 17px, 16px 17px);
+				clip-path: polygon(5px 11px, 5px 9px, 16px 3px, 26px 3px, 40px 9px, 48px 15px, 48px 5px, 40px 11px, 26px 17px, 16px 17px);
+			}
+			
+			.path7:before {
+				content: '';
+				position: absolute;
+				width: 3px;
+				height: 3px;
+				border-radius: 3px;
+				background-color: #fff;
+				margin: 8px 0 0 12px;
+			}
+		</style>
+	</head>
+
+	<body>
+		
+		<div id="main">
+			<h1>CSS3 clip-path之polygon绘图与动画实例页面</h1>
+			<a href="http://www.zhangxinxu.com/wordpress/?p=4732" id="back">回到相关文章 &raquo;</a>
+			<div id="body">
+				<div id="effect" class="part">
+					<h3>效果：</h3>
+					<div class="show">
+						<div class="demo">
+							<div id="step1">
+								<p><button id="button1">来一个三角</button></p>
+								<div><i class="triangle"></i></div>
+							</div>
+							<div id="step2" hidden>
+								<p><button id="button2">鼠标hover朝下转</button></p>
+								<div><i class="triangle path1"></i></div>
+							</div>
+							<div id="step3" hidden>
+								<p><button id="button3">再来一个三角</button></p>
+								<div><i class="triangle path1"></i></div>
+							</div>
+							<div id="step4" hidden>
+								<p><button id="button4">距离开一点</button></p>
+								<div><i class="triangle path3"></i></div>
+							</div>
+							<div id="step5" hidden>
+								<p><button id="button5">再连一根线</button></p>
+								<div><i class="triangle path4"></i></div>
+							</div>
+							<div id="step6" hidden>
+								<p><button id="button6">线不能粗一点吗？</button></p>
+								<div><i class="triangle path5"></i></div>
+							</div>
+							<div id="step7" hidden>
+								<p><button id="button7">给爷变个身！</button></p>
+								<div><i class="triangle path6"></i></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			if(window.addEventListener) {
+				var triangles = document.querySelectorAll(".triangle");
+				var buttons = document.querySelectorAll(".demo button");
+				[].slice.call(buttons).forEach(function(button, index) {
+					button.addEventListener("click", function() {
+						var id = this.id.replace(/\D/g, ""),
+							step = document.getElementById("step" + (id * 1 + 1));
+						triangles[index].classList.add("path" + id);
+						if(step) step.removeAttribute("hidden");
+						// 父亲元素.replaceChild(新，旧)
+						var newElement = document.createElement("strong");
+						newElement.innerHTML = this.innerHTML;
+						this.parentNode.replaceChild(newElement, this);
+					});
+
+				});
+
+			}
+		</script>
+
+	
+	</body>
+
+</html>

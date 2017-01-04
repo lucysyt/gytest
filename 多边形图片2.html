@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			html,
+			body {
+				margin: 0;
+				padding: 0;
+				height: 100%;
+			}
+			
+			body {
+				font-family: 'Helvetica Neue', Helvetica, Arial, "微软雅黑", sans-serif;
+				color: #343434;
+			}
+			
+			.wrap {
+				height: 100%;
+				perspective: 1000px;
+			}
+			
+			.cont {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin: -80px;
+				padding: 0;
+				width: 160px;
+				height: 160px;
+			}
+			
+			.cont-out,
+			.cont-in {
+				height: 100%;
+				/* transform-origin: 50% 86.254037844386% 81.64965809277259% ; */
+				transform-style: preserve-3d;
+			}
+			
+			li {
+				position: absolute;
+				display: block;
+				width: 100%;
+				height: 100%;
+				text-align: center;
+				font-size: 100px;
+				line-height: 160px;
+				transition: transform .4s;
+			}
+			
+			.phase-bottom {
+				left: 0;
+				top: 0;
+				background: #FFC;
+				-webkit-clip-path: polygon(0% 0%, 100% 0%, 50% 86.60254037844386%);
+			}
+			
+			.phase-left {
+				right: 50%;
+				top: 0;
+				background: #FCF;
+				-webkit-clip-path: polygon(50% 0%, 0% 86.60254037844386%, 100% 86.60254037844386%);
+			}
+			
+			.phase-back {
+				left: 0;
+				bottom: 100%;
+				background: #CFF;
+				-webkit-clip-path: polygon(0% 100%, 100% 100%, 50% 13.397459621556138%);
+			}
+			
+			.phase-right {
+				left: 50%;
+				top: 0;
+				background: #FCC;
+				-webkit-clip-path: polygon(50% 0%, 0% 86.60254037844386%, 100% 86.60254037844386%);
+			}
+			
+			.wrap-up .phase-back {
+				transform: rotate3d(-1, 0, 0, 1.9106332362490186rad);
+				transform-origin: 50% 100%;
+			}
+			
+			.wrap-up .phase-left {
+				transform: rotate3d(0.4330127018922193, 0.75, 0, 1.910633236249rad);
+				transform-origin: 75% 43.30127018922193%;
+				transition-delay: .2s;
+			}
+			
+			.wrap-up .phase-right {
+				transform: rotate3d(0.4330127018922193, -0.75, 0, 1.910633236249rad);
+				transform-origin: 25% 43.30127018922193%;
+				transition-delay: .4s;
+			}
+			
+			.roll.cont-out {
+				-webkit-animation: trans .5s linear forwards 1;
+				animation: trans .5s linear forwards 1;
+			}
+			
+			.roll.cont-in {
+				-webkit-animation: rolling 3s .5s linear infinite;
+				animation: rolling 3s .5s linear infinite;
+			}
+			
+			@-webkit-keyframes trans {
+				from {
+					transform: rotateX(0deg);
+				}
+				to {
+					transform: rotateX(90deg);
+				}
+			}
+			
+			@keyframes trans {
+				from {
+					transform: rotateX(0deg);
+				}
+				to {
+					transform: rotateX(90deg);
+				}
+			}
+			
+			@-webkit-keyframes rolling {
+				from {
+					-webkit-transform: rotateZ(0deg);
+				}
+				to {
+					-webkit-transform: rotateZ(360deg);
+				}
+			}
+			
+			@keyframes rolling {
+				from {
+					transform: rotateZ(0deg);
+				}
+				to {
+					transform: rotateZ(360deg);
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		不兼容火狐ie
+		<div class="wrap">
+			<button id="wrap">wrap it up</button>
+			<button id="roll">roll with it</button>
+
+			<div class="cont">
+				<div class="cont-out">
+					<ul class="cont-in">
+						<li class="phase-back"></li>
+						<li class="phase-right"></li>
+						<li class="phase-left"></li>
+						<li class="phase-bottom"></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			document.querySelector("#wrap").addEventListener("click", function() {
+				document.body.classList.add("wrap-up");
+			});
+
+			document.querySelector("#roll").addEventListener("click", function() {
+				document.querySelector(".cont-out").classList.add("roll");
+				document.querySelector(".cont-in").classList.add("roll");
+			});
+		</script>
+	</body>
+
+</html>

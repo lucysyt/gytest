@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>多个div同时运动</title>
+		<style type="text/css">
+			div {
+				width: 100px;
+				height: 100px;
+				background: red;
+				border: 20px solid black;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function() {
+				var div = document.getElementsByTagName("div");
+				for(var i = 0; i < div.length; i++) {
+
+					div[i].timer = null;
+
+					div[i].onmouseover = function() {
+						startMove(this, 400);
+					};
+					div[i].onmouseout = function() {
+						startMove(this, 100);
+					};
+				}
+			};
+
+			function startMove(obj, itarget) {
+
+				clearInterval(obj.timer);
+
+				obj.timer=setInterval(function() {
+
+					var speed = (itarget - parseInt(getStyle(obj,'width'))) / 6;
+
+					speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+
+					if(itarget == parseInt(getStyle(obj,'width'))) {
+						
+						clearInterval(obj.timer);
+						
+					} else {
+
+						obj.style.width =parseInt(getStyle(obj,'width')) + speed + "px";
+						console.log(obj.style.width);
+					}
+
+				}, 30);
+
+			};
+			//获取div的宽度，兼容ie
+			function getStyle(obj,name){
+				
+				if(obj.currentStyle){
+					
+					return obj.currentStyle[name];
+				}
+				else{
+					return getComputedStyle(obj,false)[name]
+				}
+			}
+	
+		</script>
+	</head>
+
+	<body>
+		<div></div>
+		<br />
+		<div></div>
+		<br />
+		<div></div>
+	</body>
+
+</html>
