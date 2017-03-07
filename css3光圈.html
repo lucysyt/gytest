@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		body {background-color: gray;}
+			.icon { position: relative; margin: 0 auto; width: 100px; height: 100px; border-radius: 100px; background: rgba(255,255,255,.5);}
+			.icon:before{position: absolute;content: "";top: 0;left: 0; width: 100px;height: 100px;border-radius:100px; border: 1px solid red;
+			 -webkit-animation-name: "gogogo";
+			 -webkit-animation-duration: 1.5s;
+			 -webkit-animation-iteration-count: infinite;
+			}
+			.icon:after{position: absolute;content: "";top: -6px;left: -6px; width: 112px;height: 112px;border-radius:112px; border: 1px solid red;
+			 -webkit-animation-name: "gogogo1";
+			 -webkit-animation-duration: 1.5s;
+			 -webkit-animation-iteration-count: infinite;
+			 animation-delay:0.5s;
+             -webkit-animation-delay:0.5s;
+			}
+			
+			
+			
+			@-webkit-keyframes gogogo {
+			    0%{
+			       opacity: 0;
+			       -webkit-transform: scale(1);
+			    
+			    }
+			    
+			    25%{
+			       opacity: 0.5;
+			       -webkit-transform: scale(1.05);
+			    
+			    }
+			   
+			    50%{
+			        opacity: 1;
+			       -webkit-transform: scale(1.1);
+			    
+			    }
+			    75%{
+			       opacity: 0.5;
+			       -webkit-transform: scale(1.15);
+			    
+			    }
+			    100%{
+			    	
+			    	opacity: 0;
+			        -webkit-transform: scale(1.2);
+			    }
+			}
+			@-webkit-keyframes gogogo1 {
+
+			    0%{
+			       opacity: 0;
+			       -webkit-transform: scale(1);
+			    
+			    }
+			    
+			    25%{
+			       opacity: 0.5;
+			       -webkit-transform: scale(1.05);
+			    
+			    }
+			   
+			    50%{
+			        opacity: 1;
+			       -webkit-transform: scale(1.1);
+			    
+			    }
+			    75%{
+			       opacity: 0.5;
+			       -webkit-transform: scale(1.15);
+			    
+			    }
+			    100%{
+			    	
+			    	opacity: 0;
+			        -webkit-transform: scale(1.2);
+			    }
+			}
+		</style>
+	</head>
+	<body>
+		<br /><br /><br /><br />
+		<div class="icon"><span></span></div>
+	</body>
+</html>
