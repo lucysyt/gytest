@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			//鼠标点击时的鼠标坐标
+			function show_coords(event)
+
+			{
+
+				x = event.clientX
+
+				y = event.clientY
+
+				alert("X 坐标： " + x + ", Y 坐标： " + y)
+
+			}
+		</script>
+	</head>
+
+	<body onmousedown="show_coords(event)">
+
+		<p>在此文档中按下你鼠标的左键看看！</p>
+	</body>
+
+</html>

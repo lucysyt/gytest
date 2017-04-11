@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div {width: 100px;height: 100px;background: #ccc;position: absolute;}
+		</style>
+		<script type="text/javascript">
+			window.onkeydown=function(ev){
+				
+				var oDiv=document.getElementById('div1');
+				var oEv=ev||event;
+				//alert(oEv.keyCode);
+				if(oEv.keyCode==39)
+				{
+					oDiv.style.left=oDiv.offsetLeft+10+'px';
+				}
+				else if(oEv.keyCode==37){
+					oDiv.style.left=oDiv.offsetLeft-10+'px';
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div id="div1"></div>
+	</body>
+</html>

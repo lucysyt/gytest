@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>阻止向上冒泡事件</title>
+		<style type="text/css">
+			div{width: 200px;height: 200px;background: red;display: none;}
+		</style>
+		<script type="text/javascript">
+			window.onload=function(){
+				var oBtn=document.getElementById('btn1');
+				var oDiv=document.getElementById('div1');
+				oBtn.onclick=function(ev){
+					var oEv=ev||event;
+					oDiv.style.display='block';
+					oEv.cancelBubble=true;
+				}
+				document.onclick=function(){
+					oDiv.style.display='none';
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<button id="btn1" type="button">冒泡</button>
+		<div id="div1"></div>
+	</body>
+</html>

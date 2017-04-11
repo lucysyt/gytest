@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div {width: 10px;height: 10px;background: red;position: absolute;}
+		</style>
+		<script type="text/javascript">
+			function getO(oEv){
+				var xScrolls=document.documentElement.scrollLeft||document.body.scrollLeft;
+				var yScrolls=document.documentElement.scrollTop||document.body.scrollTop;
+				
+				return {x:oEv.clientX+xScrolls,y:oEv.clientY+yScrolls}
+			}
+			document.onmousemove=function(ev){
+				var oEv=ev||event;
+				var oDiv=document.getElementsByTagName('div');
+				var oPo=getO(oEv);
+				for(var i=oDiv.length-1;i>0;i--){
+					oDiv[i].style.left=oDiv[i-1].offsetLeft+'px';
+					oDiv[i].style.top=oDiv[i-1].offsetTop+'px';
+				}
+				oDiv[0].style.left=oPo.x+'px';
+				oDiv[0].style.top=oPo.y+'px';
+			}
+			
+		</script>
+	</head>
+	<body style="height: 2000px;">
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</body>
+</html>

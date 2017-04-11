@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			window.onkeydown=function(ev){
+				var oEv=ev||event;
+				var inVal=document.getElementById('input1');
+				var txt=document.getElementById('txt1');
+				if(oEv.keyCode==13){
+					txt.value += inVal.value+'\n';
+					inVal="";
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<input id="input1" type="text" /><br />
+		<textarea id="txt1" name="usename" rows="20" cols="30"></textarea>
+	</body>
+</html>
