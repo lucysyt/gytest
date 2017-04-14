@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div {background: gray;width: 100px;height: 100px;position: absolute;display: none;}
+		</style>
+		<script>
+			//鼠标的右击事件
+			
+			document.oncontextmenu=function(ev){
+				var oEv=ev||event;
+				var oDiv=document.getElementById('div1');
+				oDiv.style.display='block';
+				oDiv.style.left=oEv.clientX+"px";
+				oDiv.style.top=oEv.clientY+'px';
+				
+				return false;
+			}
+			document.onclick=function(){
+				var oDiv=document.getElementById('div1');
+				oDiv.style.display='none';
+			}
+		</script>
+	</head>
+	<body>
+		<div id="div1">
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+			</ul>
+		</div>
+	</body>
+</html>
