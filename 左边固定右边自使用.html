@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>拖拽</title>
+		<style type="text/css">
+			#div1 {width: 500px;height: 500px; background-color: #F5F5F5;position: relative;}
+			#div2 {width: 100px;height: 100px;background: red;position: absolute;}
+		</style>
+		<script>
+			window.onload=function(){
+				var div1 = document.getElementById('div1');
+				var div2 = document.getElementById('div2');
+				
+				var disX = 0;
+				var disY = 0;
+				
+				div2.onmousedown = function(ev){
+					var oEv = ev || event;
+					
+					disX = oEv.clientX-div2.offsetLeft;
+					disY  = oEv.clientY-div2.offsetTop;
+					
+					document.onmousemove = function(ev){
+						
+						var oEvent = ev || event;
+						var l = oEvent.clientX-disX;
+						var t = oEvent.clientY-disY;
+						
+						
+						if(l<0){
+							l=0;
+						}
+						if(l > div1.offsetWidth - div2.offsetWidth){
+							l = div1.offsetWidth  - div2.offsetWidth;
+						}
+						if(t<0){
+							t=0;
+						}
+						if(t > div1.offsetWidth - div2.offsetHeight){
+							t = div1.offsetHeight - div2.offsetHeight; 
+						}
+						div2.style.left = l+'px';
+						div2.style.top = t +'px';
+					}
+				document.onmouseup = function(){
+					document.onmousemove = null;
+					document.onmouseup = null;
+				}
+				return false;	
+					
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div id="div1">
+			<div id="div2">
+				
+			</div>
+		</div>
+		
+	</body>
+</html>

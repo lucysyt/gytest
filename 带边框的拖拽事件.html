@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div2 { position: absolute; width: 100px;height: 100px;background: red;}
+			#div1 {position: relative;width: 800px;height: 800px;background: #F5F5F5;}
+			.box {border:1px dashed #000;position: absolute;}
+		</style>
+		<script type="text/javascript">
+			window.onload=function(){
+				var div1 = document.getElementById('div1');
+				var div2  = document.getElementById('div2');
+				
+				var disX = 0;
+				var disY = 0;
+				
+				div2.onmousedown=function(ev){
+					
+					var oEvent = ev||event;
+					disX = oEvent.clientX - div2.offsetLeft;
+					disY = oEvent.clientY - div2.offsetTop;
+					
+					var oBox = document.createElement('div');
+					oBox.className = 'box';
+					oBox.style.width = div2.offsetWidth-2+'px';
+					oBox.style.height = div2.offsetHeight-2+'px';
+					
+					oBox.style.left = div2.offsetLeft + 'px';
+					oBox.style.top = div2.offsetTop + 'px';
+					
+					
+					document.body.appendChild(oBox);
+					
+					document.onmousemove = function(ev){
+						var oEvent = ev || event ;
+						
+						var l = oEvent.clientX - disX;
+						var t = oEvent.clientY - disY;
+						
+						if(l < 0)
+						{
+							l = 0;
+						}
+						else if(l > div1.offsetWidth - div2.offsetWidth)
+						{
+							l = div1.offsetWidth - div2.offsetWidth;
+						}
+						
+						if(t<0)
+						{
+							t = 0;
+						}
+						else if(t > div1.offsetHeight-div2.offsetHeight){
+							
+							t= div1.offsetHeight-div2.offsetHeight;
+						}
+						
+						
+						oBox.style.left = l + 'px';
+						oBox.style.top = t + 'px';
+						
+
+					}
+					document.onmouseup = function(ev){
+						
+						document.onmousemove =null;
+						document.onmouseup = null;
+						
+						div2.style.left = oBox.offsetLeft+'px';
+					    div2.style.top = oBox.offsetTop+'px';
+					    
+					    document.body.removeChild(oBox);
+					}
+					
+					return false;//chrome、ff、IE9
+
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="div1">
+			<div id="div2">
+				
+			</div>
+		</div>
+	</body>
+</html>

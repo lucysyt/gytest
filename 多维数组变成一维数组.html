@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+//			var arr = ['q',['a','d'],'g',['sd',['s']]];
+//			
+//			function getArr(arrs){
+//				return (arrs+'').split(',').map(x=>(x));
+//			}
+//			console.log(arr+'');
+//			console.log(getArr(arr).sort().reverse());
+			var arr = ['q',['a','d'],'g',['sd',['s']]];
+			var itemArry = [];
+			
+			while(arr.length){
+				
+				var item=arr.shift();
+				
+				if(Array.isArray(item) && item.length > 0){
+					arr = item.concat(arr);
+				}
+				else {
+					itemArry.push(item);
+				}
+			}
+		console.log(itemArry.sort());
+
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

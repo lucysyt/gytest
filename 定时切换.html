@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			ul {margin: 0;padding: 0;list-style: none;}
+			ul li {width: 100px; height: 50px;float: left;background: azure;cursor: pointer;}
+			ul li.active {background-color: red;display: block;}
+			#box {
+				background: #F5F5F5;
+				clear: both;
+			}
+			#box #box1{width: 200px;height: 100px;background: green;color: #fff;font-size: 24px;display: block;}
+			#box #box2{width: 200px;height: 100px;background: yellow;color: #000;font-size: 24px;display: none;}
+		</style>
+		<script src="js/jquery.min.js"></script>
+		<script type="text/javascript">
+			var num = 0;
+			$(function(){
+				
+			    var timer = setInterval(tabTimer,2000);
+			    
+			    $('ul li').each(function(){
+					$(this).mouseover(function(){
+						clearInterval(timer);
+						var ids = $(this).index();
+						console.log(ids);
+						num = ids ;
+						tabTimer();
+					});
+				});
+				$('ul').mouseout(function(){
+					timer = setInterval(tabTimer,2000);
+				});
+			})
+			
+			function tabTimer(){
+				if(num == 0){
+					$('ul li').eq(0).addClass('active').siblings('li').removeClass('active');
+					$("#box1").show(100);
+					$('#box2').hide(100);
+					num = 1;
+				}
+				else if(num == 1){
+					
+					$("#box2").show(100);
+					$('#box1').hide(100);
+					$('ul li').eq(1).addClass('active').siblings('li').removeClass('active');
+					num = 0;
+				}
+				else {
+					return;
+				}
+			}
+			
+		</script>
+	</head>
+	<body>
+		<ul>
+			<li class="active">选项一</li>
+			<li>选项二</li>
+		</ul>
+		<div id="box">
+			<div id="box1">
+				这是一的内容
+			</div>
+			<div id="box2">
+				这是二的内容
+			</div>
+		</div>
+	</body>
+</html>

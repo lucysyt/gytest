@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery.js"></script>
+		
+	</head>
+	<body>
+		<p>addEventListener兼容ff，下面的js未做兼容</p>
+		<p>// 向  元素添加事件句柄
+document.getElementById("myDIV").addEventListener("mousemove", myFunction);<br>
+// 移除 元素的事件句柄
+document.getElementById("myDIV").removeEventListener("mousemove", myFunction);</p>
+		<p>attachEvent——兼容：IE7、IE8；不兼容firefox、chrome、IE9、IE10、IE11、safari、opera</p>
+		<button type="button" id="btn">弹出ab两个alert</button>
+		<button type="button" id="btn2">删除弹出a的绑定事件</button>
+		<button type="button" id="btn1">jquery弹出ab两个alert</button>
+	</body>
+	<script type="text/javascript">
+
+			$(document).on('click','#btn1',function(){
+			    alert('a1');
+			});
+			$(document).on('click','#btn1',function(){
+				alert('b2');
+			});
+
+			window.onload = function(){
+				
+				var oBtn = document.getElementById('btn');
+				var deBtn =document.getElementById('btn2');
+				
+				
+				function myAddEvent(obj,ev,fn){
+					
+					if(obj.attachEvent){
+						
+						obj.attachEvent('on'+ev,fn);
+					}
+					else {
+						obj.addEventListener(ev,fn,false);
+					}
+				}
+				
+				var al = function(){
+					alert('asdfsd')
+				};
+				
+				var bl = function(){
+					alert('b')
+				};
+				
+				//绑定两个a，b两个函数到oBtn上面
+				myAddEvent(oBtn,'click',al);
+				myAddEvent(oBtn,'click',bl);
+				
+				//删除绑定在oBtn上面的两个函数
+				deBtn.attachEvent('onclick',function(){
+					oBtn.detachEvent('onclick',al);
+					oBtn.detachEvent('onclick',bl);
+				});
+			}
+
+			
+			
+		</script>
+</html>
